@@ -4,14 +4,13 @@
   "description": "A webpack3.0 template",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --config build/webpack.config.js"
   },
   "author": "hobbby <jhe@kalnego.com>",
   "license": "ISC",
-  "scripts": {
-   "build": "webpack --config build/webpack.config.js"
- },
   "devDependencies": {
+    "css-loader": "^0.28.7",
+    "style-loader": "^0.19.0",
     "webpack": "^3.5.6"
   }
 }
