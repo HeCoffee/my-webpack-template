@@ -1,0 +1,17 @@
+{
+  "name": "webpack-template",
+  "version": "1.0.0",
+  "description": "A webpack3.0 template",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hobbby <jhe@kalnego.com>",
+  "license": "ISC",
+  "scripts": {
+   "build": "webpack --config build/webpack.config.js"
+ },
+  "devDependencies": {
+    "webpack": "^3.5.6"
+  }
+}
