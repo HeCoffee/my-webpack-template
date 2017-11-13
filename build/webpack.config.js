@@ -1,14 +1,18 @@
-const path = require('path');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+var path = require('path');
+var webpack = require('webpack');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var CleanWebpackPlugin = require('clean-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
-  entry: './src/javascript/index.js',
+  entry: {
+    app: ['./src/javascript/index.js',]
+  },
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, '../dist')
+    path: path.resolve(__dirname, '../dist'),
+    publicPath: '/'
   },
   devtool: 'inline-source-map',
   module: {
@@ -37,10 +41,13 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(['dist'], {root: path.resolve(__dirname, '../')}),
+    // new CleanWebpackPlugin(['dist'], {root: path.resolve(__dirname, '../')}),
+    new webpack.NamedModulesPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     new ExtractTextPlugin('[name].[contenthash].css'),
     new HtmlWebpackPlugin({
-      title: 'Output Management'
-    })
+      template: './src/index.html'
+    }),
   ]
 };
