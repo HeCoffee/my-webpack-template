@@ -3,6 +3,7 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
 
 module.exports = {
@@ -14,7 +15,7 @@ module.exports = {
     path: path.resolve(__dirname, '../dist'),
     publicPath: '/'
   },
-  devtool: 'inline-source-map',
+  devtool: '#cheap-module-eval-source-map',
   module: {
     rules: [
       {
@@ -49,5 +50,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html'
     }),
+    new FriendlyErrorsPlugin()
   ]
 };
